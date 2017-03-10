@@ -2,3 +2,6 @@
 /db*
 /.idea
 */migrations
+venv
+*.pyc
+.env
