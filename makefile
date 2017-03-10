@@ -3,3 +3,6 @@ freeze:
 
 collectstatic:
 	python manage.py collectstatic
+
+deploy-heroku:
+	git push heroku master
