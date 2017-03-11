@@ -56,7 +56,7 @@ ROOT_URLCONF = 'itemsrest.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'staticfiles')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,12 +132,9 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-try:
-    PRODUCTION = os.environ['DJ_PROD']
+# Production settings
+if os.environ.get('DJ_PROD'):
     SECRET_KEY = os.environ['SECRET_KEY']
     DEBUG = False
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
-except:
-    print('dev mode')
-    pass

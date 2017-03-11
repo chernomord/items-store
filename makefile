@@ -6,3 +6,10 @@ collectstatic:
 
 deploy-heroku:
 	git push heroku master
+
+migrate:
+	python manage.py makemigrations store
+	python manage.py migrate
+
+dev:
+	python manage.py runserver

@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Api</title>
 </head>
 <body>
+
+<script>
+  'use strict';
+  fetch('/api/items/')
+    .then(function (response) {
+{#      alert(response.headers.get('Content-Type')); // application/json; charset=utf-8#}
+{#      alert(response.status); // 200#}
+
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data.results);
+      document.body.innerText = JSON.stringify(data.results)
+{#      alert(user.name); // iliakan#}
+    })
+    .catch(alert);
+
+</script>
 
 </body>
 </html>
